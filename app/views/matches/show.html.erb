@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h3>Match #<%= @match.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @match.name %></dd>
+
+      <dt>Course</dt>
+      <dd><%= @match.course_id %></dd>
+
+      <dt>Tee time</dt>
+      <dd><%= @match.tee_time %></dd>
+
+      <dt>Winning team</dt>
+      <dd><%= @match.winning_team_id %></dd>
+
+      <dt>Home team</dt>
+      <dd><%= @match.home_team_id %></dd>
+
+      <dt>Away team</dt>
+      <dd><%= @match.away_team_id %></dd>
+
+      <dt>Booth player 1</dt>
+      <dd><%= @match.booth_player_1_id %></dd>
+
+      <dt>Booth player 2</dt>
+      <dd><%= @match.booth_player_2_id %></dd>
+
+      <dt>Kellogg player 1</dt>
+      <dd><%= @match.kellogg_player_1_id %></dd>
+
+      <dt>Kellogg player 2</dt>
+      <dd><%= @match.kellogg_player_2_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/matches" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/matches/<%= @match.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_match/<%= @match.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

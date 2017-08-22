@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h1>
+    Matches
+    <a href="/matches/new" class="btn btn-lg btn-success">New Match</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Tee time</th>
+        <th>Winning team</th>
+        <th>Home team</th>
+        <th>Away team</th>
+        <th>Booth player 1</th>
+        <th>Booth player 2</th>
+        <th>Kellogg player 1</th>
+        <th>Kellogg player 2</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.name %></td>
+        <td><%= match.course_id %></td>
+        <td><%= match.tee_time %></td>
+        <td><%= match.winning_team_id %></td>
+        <td><%= match.home_team_id %></td>
+        <td><%= match.away_team_id %></td>
+        <td><%= match.booth_player_1_id %></td>
+        <td><%= match.booth_player_2_id %></td>
+        <td><%= match.kellogg_player_1_id %></td>
+        <td><%= match.kellogg_player_2_id %></td>
+        <td>
+          <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
+          <a href="/matches/<%= match.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

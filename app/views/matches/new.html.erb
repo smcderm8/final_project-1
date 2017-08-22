@@ -1,0 +1,118 @@
+<!-- Validation failure messages -->
+<% if @match.errors.any? %>
+  <% @match.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Match</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_match" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @match.name %>">
+      </div>
+
+      <!-- Label and input for course_id -->
+      <div class="form-group">
+        <label for="course_id" class="control-label">
+          Course
+        </label>
+
+        <input type="text" id="course_id" name="course_id" placeholder="Course" class="form-control" value="<%= @match.course_id %>">
+      </div>
+
+      <!-- Label and input for tee_time -->
+      <div class="form-group">
+        <label for="tee_time" class="control-label">
+          Tee time
+        </label>
+
+        <input type="text" id="tee_time" name="tee_time" placeholder="Tee time" class="form-control" value="<%= @match.tee_time %>">
+      </div>
+
+      <!-- Label and input for winning_team_id -->
+      <div class="form-group">
+        <label for="winning_team_id" class="control-label">
+          Winning team
+        </label>
+
+        <input type="text" id="winning_team_id" name="winning_team_id" placeholder="Winning team" class="form-control" value="<%= @match.winning_team_id %>">
+      </div>
+
+      <!-- Label and input for home_team_id -->
+      <div class="form-group">
+        <label for="home_team_id" class="control-label">
+          Home team
+        </label>
+
+        <input type="text" id="home_team_id" name="home_team_id" placeholder="Home team" class="form-control" value="<%= @match.home_team_id %>">
+      </div>
+
+      <!-- Label and input for away_team_id -->
+      <div class="form-group">
+        <label for="away_team_id" class="control-label">
+          Away team
+        </label>
+
+        <input type="text" id="away_team_id" name="away_team_id" placeholder="Away team" class="form-control" value="<%= @match.away_team_id %>">
+      </div>
+
+      <!-- Label and input for booth_player_1_id -->
+      <div class="form-group">
+        <label for="booth_player_1_id" class="control-label">
+          Booth player 1
+        </label>
+
+        <input type="text" id="booth_player_1_id" name="booth_player_1_id" placeholder="Booth player 1" class="form-control" value="<%= @match.booth_player_1_id %>">
+      </div>
+
+      <!-- Label and input for booth_player_2_id -->
+      <div class="form-group">
+        <label for="booth_player_2_id" class="control-label">
+          Booth player 2
+        </label>
+
+        <input type="text" id="booth_player_2_id" name="booth_player_2_id" placeholder="Booth player 2" class="form-control" value="<%= @match.booth_player_2_id %>">
+      </div>
+
+      <!-- Label and input for kellogg_player_1_id -->
+      <div class="form-group">
+        <label for="kellogg_player_1_id" class="control-label">
+          Kellogg player 1
+        </label>
+
+        <input type="text" id="kellogg_player_1_id" name="kellogg_player_1_id" placeholder="Kellogg player 1" class="form-control" value="<%= @match.kellogg_player_1_id %>">
+      </div>
+
+      <!-- Label and input for kellogg_player_2_id -->
+      <div class="form-group">
+        <label for="kellogg_player_2_id" class="control-label">
+          Kellogg player 2
+        </label>
+
+        <input type="text" id="kellogg_player_2_id" name="kellogg_player_2_id" placeholder="Kellogg player 2" class="form-control" value="<%= @match.kellogg_player_2_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Match
+      </button>
+      or
+      <a href="/matches">Cancel</a>
+    </form>
+  </div>
+</div>

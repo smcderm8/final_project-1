@@ -14,8 +14,8 @@
   </div>
   
   <div class="field">
-    <%= f.label :team %><br />
-    <%= f.select(:team_id, options_from_collection_for_select(Team.all, :id, :name, 1), {}, {:class => "form-control"}) %>
+    <%= f.label :team_id %><br />
+    <%= f.select(:team_id, options_from_collection_for_select(Team.all, :id, :name, @user.team_id), {}, {:class => "form-control"}) %>
   </div>
   
   <div class="field">

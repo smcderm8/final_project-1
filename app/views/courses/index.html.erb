@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Image url</th>
+        <th></th>
         <th>Name</th>
         <th>Address</th>
         <th>Par</th>
@@ -21,7 +21,7 @@
 
       <% @courses.each do |course| %>
       <tr>
-        <td><%= course.image_url %></td>
+        <td><img src = "<%= course.image_url %>" width = 400, height = 160</td>
         <td><%= course.name %></td>
         <td><%= course.address %></td>
         <td><%= course.par %></td>
@@ -30,8 +30,8 @@
         <td><%= course.yardage %></td>
         <td>
           <a href="/courses/<%= course.id %>" class="btn btn-primary">Show</a>
-          <a href="/courses/<%= course.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_course/<%= course.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <!--<a href="/courses/<%= course.id %>/edit" class="btn btn-warning">Edit</a>-->
+          <!--<a href="/delete_course/<%= course.id %>" class="btn btn-danger" rel="nofollow">Delete</a>-->
         </td>
       </tr>
       <% end %>

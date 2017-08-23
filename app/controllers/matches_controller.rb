@@ -84,4 +84,12 @@ class MatchesController < ApplicationController
       redirect_to(:back, :notice => "Match deleted.")
     end
   end
+  
+  def scoreboard
+    @match = Match.find(params[:id])
+    
+    render("matches/scoreboard.html.erb")
+    
+  end
+    
 end

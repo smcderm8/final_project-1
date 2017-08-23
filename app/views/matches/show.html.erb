@@ -14,9 +14,6 @@
       <dt>Tee time</dt>
       <dd><%= @match.tee_time %></dd>
 
-      <dt>Winning team</dt>
-      <dd><%= @match.winning_team.name %></dd>
-
       <dt>Booth player 1</dt>
       <dd><%= @match.booth_player_1.name %></dd>
 
@@ -28,12 +25,15 @@
 
       <dt>Kellogg player 2</dt>
       <dd><%= @match.kellogg_player_2.name %></dd>
+      
+      <dt>SCOREBOARD</dt>
+      <dd>
+        <a href="/matches/<%= @match.id %>/scoreboard">
+        View Scoreboard
+        </a>
+      </dd>
 
     </dl>
-    
-      <p>
-        <%= @scoreboard_array.count(1) %>
-      </p>
   </div>
 </div>
     
@@ -53,7 +53,7 @@
         </div>
             
          
-        <% @score1 = hole.scores.find_by(:player_id=>@match.booth_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>    
+        <% @score1 = hole.scores.find_by(:player_id=>@match.booth_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>   
         <% if @score1.present? %>
           <div class="row">
             <div class="col-md-8 col-md-offset-2 mb-2">
@@ -344,7 +344,7 @@
            <% @kellogg_array = [@score3, @score4] %>
            <% @sorted_booth_array = @booth_array.sort_by(&:score) %>
            <% @sorted_kellogg_array = @kellogg_array.sort_by(&:score) %>
-           <% @booth_winner = @sorted_booth_array.first %>
+           <% @booth_winner = @sorted_booth_array.first%>
            <% @kellogg_winner = @sorted_kellogg_array.first %>
                 <div class="row">
                   <div class="col-md-8 col-md-offset-2 mb-2">
@@ -373,9 +373,45 @@
       </div>
     <% end %>
     
-    <p>
-      <%= @scoreboard_array.count(1) %> 
-    </p>
+
+
+    <% @booth_holes_won = @scoreboard_array.count(1) %>
+    <% @kellogg_holes_won = @scoreboard_array.count(2) %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <img src = "<%= @match.booth_player_1.team.photo_url %>" width = 150, height = 50>
+              &emsp; Holes Won:
+            </h2>
+          </div>
+          <div class="panel-body">
+            <div class="lead">
+              <font size="88"><%= @booth_holes_won %></font>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <img src = "<%= @match.kellogg_player_1.team.photo_url %>" width = 150, height = 50>
+              &emsp; Holes Won:
+            </h2>
+          </div>
+          <div class="panel-body">
+            <div class="lead">
+              <font size="88"><%= @kellogg_holes_won %></font>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
 
     <div class="btn-group btn-group-justified">
       <a href="/matches" class="btn btn-primary">

@@ -51,7 +51,7 @@ class ScoresController < ApplicationController
     save_status = @score.save
 
     if save_status == true
-      redirect_to("/scores/#{@score.id}", :notice => "Score updated successfully.")
+      redirect_to("/matches/#{@score.match_id}", :notice => "Score updated successfully.")
     else
       render("scores/edit.html.erb")
     end
@@ -65,7 +65,7 @@ class ScoresController < ApplicationController
     if URI(request.referer).path == "/scores/#{@score.id}"
       redirect_to("/", :notice => "Score deleted.")
     else
-      redirect_to("/scores", :notice => "Score deleted.")
+      redirect_to("/matches/#{@score.match_id}", :notice => "Score deleted.")
     end
   end
 end

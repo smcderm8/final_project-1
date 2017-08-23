@@ -10,7 +10,7 @@ class MatchesController < ApplicationController
     
     @holes = @match.course.holes
     
-    
+    @scoreboard_array = []
 
     render("matches/show.html.erb")
   end

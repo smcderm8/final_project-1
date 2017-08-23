@@ -31,6 +31,9 @@
 
     </dl>
     
+      <p>
+        <%= @scoreboard_array.count(1) %>
+      </p>
   </div>
 </div>
     
@@ -68,6 +71,8 @@
                       Score: 
                       <%= @score1.score %> 
                   </div>
+                  <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
+                  <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                 </div>
               </div>
             </div>
@@ -137,6 +142,8 @@
                       Score: 
                       <%= @score2.score %> 
                     </div>
+                    <a href="/scores/<%= @score2.id %>/edit" class="btn btn-warning">Edit</a>
+                    <a href="/delete_score/<%= @score2.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -206,6 +213,8 @@
                       Score: 
                       <%= @score3.score %> 
                     </div>
+                    <a href="/scores/<%= @score3.id %>/edit" class="btn btn-warning">Edit</a>
+                    <a href="/delete_score/<%= @score3.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -275,6 +284,8 @@
                       Score: 
                       <%= @score4.score %> 
                     </div>
+                    <a href="/scores/<%= @score4.id %>/edit" class="btn btn-warning">Edit</a>
+                    <a href="/delete_score/<%= @score4.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -326,14 +337,45 @@
             <% end %>
             
            <% if @score1.present? && @score2.present? && @score3.present? && @score4.present? %>
-             <p>
-               TRUE
-             </p>
+           <% @total_array = [@score1, @score2, @score3, @score4] %>
+           <% @sorted_total_array = @total_array.sort_by(&:score) %>
+           <% @overall_winner = @sorted_total_array.first.player %>
+           <% @booth_array = [@score1, @score2] %>
+           <% @kellogg_array = [@score3, @score4] %>
+           <% @sorted_booth_array = @booth_array.sort_by(&:score) %>
+           <% @sorted_kellogg_array = @kellogg_array.sort_by(&:score) %>
+           <% @booth_winner = @sorted_booth_array.first %>
+           <% @kellogg_winner = @sorted_kellogg_array.first %>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2 mb-2">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">
+                         Winner of Hole #<%= hole.hole_number %>:
+                        </h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="lead">
+                          <% if @booth_winner.score == @kellogg_winner.score %>
+                          HOLE TIED
+                          <% else %>
+                          <img src = "<%= @overall_winner.team.photo_url %>" width = 420, height = 130>
+                          <% @scoreboard_array.push(@overall_winner.team_id) %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
            <% end %>
           </div>
         </div>
       </div>
     <% end %>
+    
+    <p>
+      <%= @scoreboard_array.count(1) %> 
+    </p>
 
     <div class="btn-group btn-group-justified">
       <a href="/matches" class="btn btn-primary">

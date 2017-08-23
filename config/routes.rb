@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root "matches#index"
+  
   # Routes for the Hole resource:
   # CREATE
   get "/holes/new", :controller => "holes", :action => "new"

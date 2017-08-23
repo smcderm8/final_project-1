@@ -7,6 +7,9 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+    
+    @holes = @match.course.holes
+    
 
     render("matches/show.html.erb")
   end

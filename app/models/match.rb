@@ -29,5 +29,6 @@ class Match < ApplicationRecord
     belongs_to :course
     
     has_many :scores, :dependent => :destroy
+    has_many :players, :class_name => "User"
     
 end

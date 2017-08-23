@@ -16,5 +16,7 @@ class Score < ApplicationRecord
     belongs_to :player, :class_name => "User"
     belongs_to :match
     belongs_to :hole
+    belongs_to :course
+    
     
 end

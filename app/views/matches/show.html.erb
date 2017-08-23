@@ -49,9 +49,9 @@
           </h2>
         </div>
             
-            
-        <% if hole.scores.exists?(@match.booth_player_1.id) %>
-        <% @score1 = hole.scores.find_by(:player_id=>@match.booth_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>
+         
+        <% @score1 = hole.scores.find_by(:player_id=>@match.booth_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>    
+        <% if @score1.present? %>
           <div class="row">
             <div class="col-md-8 col-md-offset-2 mb-2">
               <div class="panel panel-default">
@@ -119,8 +119,8 @@
             
           <% end %>
             
-            <% if hole.scores.exists?(@match.booth_player_2.id) %>
             <% @score2 = hole.scores.find_by(:player_id=>@match.booth_player_2.id, :hole_id=>hole.id, :match_id=>@match.id) %>
+            <% if @score2.present? %>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 mb-2">
                   <div class="panel panel-default">
@@ -188,8 +188,8 @@
             
             <% end %>
             
-            <% if hole.scores.exists?(@match.kellogg_player_1.id) %>
             <% @score3 = hole.scores.find_by(:player_id=>@match.kellogg_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>
+            <% if @score3.present? %>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 mb-2">
                   <div class="panel panel-default">
@@ -257,8 +257,8 @@
             
             <% end %>
             
-            <% if hole.scores.exists?(@match.kellogg_player_2.id) %>
             <% @score4 = hole.scores.find_by(:player_id=>@match.kellogg_player_2.id, :hole_id=>hole.id, :match_id=>@match.id) %>
+            <% if @score4.present? %>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 mb-2">
                   <div class="panel panel-default">
@@ -324,8 +324,14 @@
                 </div>
               </div>
             <% end %>
+            
+           <% if @score1.present? && @score2.present? && @score3.present? && @score4.present? %>
+             <p>
+               TRUE
+             </p>
+           <% end %>
+          </div>
         </div>
-      </div>
       </div>
     <% end %>
 

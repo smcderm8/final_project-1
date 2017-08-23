@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
     
     @holes = @match.course.holes
     
+    
 
     render("matches/show.html.erb")
   end

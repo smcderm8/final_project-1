@@ -42,13 +42,13 @@
           Tee time
         </label>
 
-        <input type="datetime" id="tee_time" name="tee_time" placeholder="Tee time" class="form-control" value="<%= @match.tee_time %>">
+        <input type="datetime_field" id="tee_time" name="tee_time" placeholder="Tee time" class="form-control" value="<%= Time.now %>">
       </div>
 
       <!-- Label and input for winning_team_id -->
       <div class="form-group">
         <label for="winning_team_id" class="control-label">
-          Winning team
+          Winning team (Doesn't matter right now; this will update once scores are input and button at bottom of match is clicked)
         </label>
 
         <%= select_tag("winning_team_id", options_from_collection_for_select(Team.all, :id, :name, 1), :class => "form-control") %>

@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Match #<%= @match.id %></h3>
+  <h3>Edit <%= @match.name %></h3>
 </div>
 
 <div class="row">
@@ -24,7 +24,7 @@
           Name
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @match.name %>">
+        <input type="text" id="name" name="name" placeholder="i.e. Dubsdread Match #1" class="form-control" value="<%= @match.name %>">
       </div>
 
       <!-- Label and input for course_id -->
@@ -33,7 +33,7 @@
           Course
         </label>
 
-        <input type="text" id="course_id" name="course_id" placeholder="Course" class="form-control" value="<%= @match.course_id %>">
+        <%= select_tag("course_id", options_from_collection_for_select(Course.all, :id, :name, 1), :class => "form-control") %>
       </div>
 
       <!-- Label and input for tee_time -->
@@ -51,7 +51,7 @@
           Winning team
         </label>
 
-        <input type="text" id="winning_team_id" name="winning_team_id" placeholder="Winning team" class="form-control" value="<%= @match.winning_team_id %>">
+        <%= select_tag("winning_team_id", options_from_collection_for_select(Team.all, :id, :name, 1), :class => "form-control") %>
       </div>
 
       <!-- Label and input for home_team_id -->
@@ -60,7 +60,7 @@
           Home team
         </label>
 
-        <input type="text" id="home_team_id" name="home_team_id" placeholder="Home team" class="form-control" value="<%= @match.home_team_id %>">
+        <%= select_tag("home_team_id", options_from_collection_for_select(Team.all, :id, :name, 1), :class => "form-control") %>
       </div>
 
       <!-- Label and input for away_team_id -->
@@ -69,7 +69,7 @@
           Away team
         </label>
 
-        <input type="text" id="away_team_id" name="away_team_id" placeholder="Away team" class="form-control" value="<%= @match.away_team_id %>">
+        <%= select_tag("away_team_id", options_from_collection_for_select(Team.all, :id, :name, 2), :class => "form-control") %>
       </div>
 
       <!-- Label and input for booth_player_1_id -->
@@ -78,7 +78,7 @@
           Booth player 1
         </label>
 
-        <input type="text" id="booth_player_1_id" name="booth_player_1_id" placeholder="Booth player 1" class="form-control" value="<%= @match.booth_player_1_id %>">
+        <%= select_tag("booth_player_1_id", options_from_collection_for_select(User.all, :id, :name, 1), :class => "form-control") %>
       </div>
 
       <!-- Label and input for booth_player_2_id -->
@@ -87,7 +87,7 @@
           Booth player 2
         </label>
 
-        <input type="text" id="booth_player_2_id" name="booth_player_2_id" placeholder="Booth player 2" class="form-control" value="<%= @match.booth_player_2_id %>">
+        <%= select_tag("booth_player_2_id", options_from_collection_for_select(User.all, :id, :name, 2), :class => "form-control") %>
       </div>
 
       <!-- Label and input for kellogg_player_1_id -->
@@ -96,7 +96,7 @@
           Kellogg player 1
         </label>
 
-        <input type="text" id="kellogg_player_1_id" name="kellogg_player_1_id" placeholder="Kellogg player 1" class="form-control" value="<%= @match.kellogg_player_1_id %>">
+        <%= select_tag("kellogg_player_1_id", options_from_collection_for_select(User.all, :id, :name, 5), :class => "form-control") %>
       </div>
 
       <!-- Label and input for kellogg_player_2_id -->
@@ -105,7 +105,7 @@
           Kellogg player 2
         </label>
 
-        <input type="text" id="kellogg_player_2_id" name="kellogg_player_2_id" placeholder="Kellogg player 2" class="form-control" value="<%= @match.kellogg_player_2_id %>">
+        <%= select_tag("kellogg_player_2_id", options_from_collection_for_select(User.all, :id, :name, 6), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

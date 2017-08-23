@@ -28,9 +28,31 @@
       
       <dt>SCOREBOARD</dt>
       <dd>
-        <a href="/matches/<%= @match.id %>/scoreboard">
-        View Scoreboard
+        <a href="#scoreboard">
+          View Scoreboard
         </a>
+      </dd>
+      
+      <dt>Jump to Hole #</dt>
+      <dd>
+        <a href="#hole1"> 1 &ensp;</a>
+        <a href="#hole2"> 2 &ensp;</a>
+        <a href="#hole3"> 3 &ensp;</a>
+        <a href="#hole4"> 4 &ensp;</a>
+        <a href="#hole5"> 5 &ensp;</a>
+        <a href="#hole6"> 6 &ensp;</a>
+        <a href="#hole7"> 7 &ensp;</a>
+        <a href="#hole8"> 8 &ensp;</a>
+        <a href="#hole9"> 9 &ensp;</a>
+        <a href="#hole10"> 10 &ensp;</a>
+        <a href="#hole11"> 11 &ensp;</a>
+        <a href="#hole12"> 12 &ensp;</a>
+        <a href="#hole13"> 13 &ensp;</a>
+        <a href="#hole14"> 14 &ensp;</a>
+        <a href="#hole15"> 15 &ensp;</a>
+        <a href="#hole16"> 16 &ensp;</a>
+        <a href="#hole17"> 17 &ensp;</a>
+        <a href="#hole18"> 18 &ensp;</a>
       </dd>
 
     </dl>
@@ -38,6 +60,7 @@
 </div>
     
 <% @holes.each do |hole| %>
+  <a NAME="hole<%= hole.hole_number %>"></a>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
@@ -51,7 +74,6 @@
               </small>
           </h2>
         </div>
-            
          
         <% @score1 = hole.scores.find_by(:player_id=>@match.booth_player_1.id, :hole_id=>hole.id, :match_id=>@match.id) %>   
         <% if @score1.present? %>
@@ -61,7 +83,7 @@
                 <div class="panel-heading">
                   <h3 class="panel-title">
                      Booth Player 1:
-                     <a href="/players/<%= @match.booth_player_1.id %>">
+                     <a href="/teams/<%= @match.booth_player_1.team.id %>#<%= @match.booth_player_1.name %>">
                        <%= @match.booth_player_1.name %>
                      </a>
                   </h3>
@@ -86,7 +108,7 @@
                 <div class="panel-heading">
                   <h3 class="panel-title">
                      Booth Player 1:
-                     <a href="/players/<%= @match.booth_player_1.id %>">
+                     <a href="/teams/<%= @match.booth_player_1.team.id %>#<%= @match.booth_player_1.name %>">
                         <%= @match.booth_player_1.name %>
                      </a>
                   </h3>
@@ -132,7 +154,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Booth Player 2:
-                        <a href="/players/<%= @match.booth_player_2.id %>">
+                        <a href="/teams/<%= @match.booth_player_2.team.id %>#<%= @match.booth_player_2.name %>">
                           <%= @match.booth_player_2.name %>
                         </a>
                       </h3>
@@ -157,7 +179,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Booth Player 2:
-                        <a href="/players/<%= @match.booth_player_2.id %>">
+                        <a href="/teams/<%= @match.booth_player_2.team.id %>#<%= @match.booth_player_2.name %>">
                           <%= @match.booth_player_2.name %>
                         </a>
                       </h3>
@@ -203,7 +225,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Kellogg Player 1:
-                        <a href="/players/<%= @match.kellogg_player_1.id %>">
+                        <a href="/teams/<%= @match.kellogg_player_1.team.id %>#<%= @match.kellogg_player_1.name %>">
                           <%= @match.kellogg_player_1.name %>
                         </a>
                       </h3>
@@ -228,7 +250,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Kellogg Player 1:
-                        <a href="/players/<%= @match.kellogg_player_1.id %>">
+                        <a href="/teams/<%= @match.kellogg_player_1.team.id %>#<%= @match.kellogg_player_1.name %>">
                           <%= @match.kellogg_player_1.name %>
                         </a>
                       </h3>
@@ -274,7 +296,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Kellogg Player 2:
-                        <a href="/players/<%= @match.kellogg_player_2.id %>">
+                        <a href="/teams/<%= @match.kellogg_player_2.team.id %>#<%= @match.kellogg_player_2.name %>">
                           <%= @match.kellogg_player_2.name %>
                         </a>
                       </h3>
@@ -299,7 +321,7 @@
                     <div class="panel-heading">
                       <h3 class="panel-title">
                        Kellogg Player 2:
-                        <a href="/players/<%= @match.kellogg_player_2.id %>">
+                        <a href="/teams/<%= @match.kellogg_player_2.team.id %>#<%= @match.kellogg_player_2.name %>">
                           <%= @match.kellogg_player_2.name %>
                         </a>
                       </h3>
@@ -358,6 +380,7 @@
                         <div class="lead">
                           <% if @booth_winner.score == @kellogg_winner.score %>
                           HOLE TIED
+                          <% @scoreboard_array.push(3) %>
                           <% else %>
                           <img src = "<%= @overall_winner.team.photo_url %>" width = 420, height = 130>
                           <% @scoreboard_array.push(@overall_winner.team_id) %>
@@ -374,9 +397,11 @@
     <% end %>
     
 
-
+    <a NAME="scoreboard"></a>
+    
     <% @booth_holes_won = @scoreboard_array.count(1) %>
     <% @kellogg_holes_won = @scoreboard_array.count(2) %>
+    <% @holes_tied = @scoreboard_array.count(3) %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
@@ -412,6 +437,23 @@
         </div>
       </div>
     </div>
+    
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              Holes Tied:
+            </h2>
+          </div>
+          <div class="panel-body">
+            <div class="lead">
+              <font size="88"><%= @holes_tied %></font>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
 
     <div class="btn-group btn-group-justified">
       <a href="/matches" class="btn btn-primary">
@@ -420,7 +462,7 @@
       <a href="/matches/<%= @match.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_match/<%= @match.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <!--<a href="/delete_match/<%= @match.id %>" class="btn btn-danger" rel="nofollow">-->
+      <!--  Delete-->
+      <!--</a>-->
     </div>

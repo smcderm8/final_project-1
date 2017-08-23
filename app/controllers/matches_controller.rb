@@ -86,7 +86,10 @@ class MatchesController < ApplicationController
   end
   
   def scoreboard
-    @match = Match.find(params[:id])
+    @match = Match.find(params[:match_id])
+    
+    @booth_holes_won = params[:booth_holes_won]
+    @kellogg_holes_won = params[:kellogg_holes_won]
     
     render("matches/scoreboard.html.erb")
     

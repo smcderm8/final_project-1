@@ -1,3 +1,35 @@
-<h1>
-    HELLO WORLD!
-</h1>
+<div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <img src = "<%= @match.booth_player_1.team.photo_url %>" width = 150, height = 50>
+              &emsp; Holes Won:
+            </h2>
+          </div>
+          <div class="panel-body">
+            <div class="lead">
+              <font size="88"><%= @booth_holes_won %></font>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <img src = "<%= @match.kellogg_player_1.team.photo_url %>" width = 150, height = 50>
+              &emsp; Holes Won:
+            </h2>
+          </div>
+          <div class="panel-body">
+            <div class="lead">
+              <font size="88"><%= @kellogg_holes_won %></font>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>

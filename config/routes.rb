@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   get "/delete_match/:id", :controller => "matches", :action => "destroy"
   
   # SCOREBOARD
-  get "/matches/:id/scoreboard", :controller => "matches", :action => "scoreboard"
+  post "/matches/:id/create_scoreboard", :controller => "matches", :action => "scoreboard" 
   #------------------------------
 
   # Routes for the Course resource:

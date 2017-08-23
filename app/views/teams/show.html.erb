@@ -25,21 +25,18 @@
         <th>Handicap Index</th>
         <th>Email</th>
         <th>Phone Number</th>
-        <th>Actions</th>
       </tr>
       
       <% @roster = @team.players %>
 
       <% @roster.each do |player| %>
+      <a NAME="<%= player.name %>"></a>
       <tr>
         <td><img src = "<%= player.photo_url %>" width=175, height=125></td>
         <td><%= player.name %></td>
         <td><%= player.handicap_index %></td>
         <td><%= player.email %></td>
         <td><%= player.phone_number %></td>
-        <td>
-          <a href="/players/<%= player.id %>" class="btn btn-primary">Show</a>
-        </td>
       </tr>
       <% end %>
     </table>

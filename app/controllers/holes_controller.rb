@@ -1,6 +1,7 @@
 class HolesController < ApplicationController
   def index
-    @holes = Hole.all
+    @courses = Course.all
+    
 
     render("holes/index.html.erb")
   end

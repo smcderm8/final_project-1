@@ -31,4 +31,10 @@ class Match < ApplicationRecord
     has_many :scores, :dependent => :destroy
     has_many :players, :class_name => "User"
     
+    validates :course_id, :uniqueness => {:scope => :tee_time }
+    validates :booth_player_1_id, :presence => true
+    validates :booth_player_2_id, :presence => true
+    validates :kellogg_player_1_id, :presence => true
+    validates :kellogg_player_2_id, :presence => true
+    
 end

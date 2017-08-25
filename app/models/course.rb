@@ -18,6 +18,10 @@ class Course < ApplicationRecord
     
     has_many :matches
     has_many :holes, :dependent => :destroy
+    
+    validates :name, :uniqueness => {:scope => :address }
+    validates :address, :presence => true
+    validates :par, :presence => true
 
     
 end

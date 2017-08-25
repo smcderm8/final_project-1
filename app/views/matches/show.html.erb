@@ -97,9 +97,15 @@
                       <%= @score1.score %> 
                   </div>
                     <% if current_user.id == @match.booth_player_1.id %>
-                      <% elsif current_user.id == @match.booth_player_2_id%>
-                      <% elsif current_user.id == @match.kellogg_player_1_id%>
-                      <% elsif current_user.id == @match.kellogg_player_2_id%>
+                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
+                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                      <% elsif current_user.id == @match.booth_player_2.id%>
+                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
+                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                      <% elsif current_user.id == @match.kellogg_player_1.id%>
+                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
+                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                      <% elsif current_user.id == @match.kellogg_player_2.id%>
                       <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
                       <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                     <% end %>
@@ -124,9 +130,6 @@
                 <div class="panel-body">
                   <div class="lead">
                    <% if current_user.id == @match.booth_player_1.id %>
-                        <% elsif current_user.id == @match.booth_player_2_id%>
-                        <% elsif current_user.id == @match.kellogg_player_1_id%>
-                        <% elsif current_user.id == @match.kellogg_player_2_id%>
                           <form action="/create_score" method="post">
                                 <!-- Hidden input for authenticity token to protect from forgery -->
                                 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -150,6 +153,78 @@
                                   Post Score
                                 </button>
                           </form>
+                    <% elsif current_user.id == @match.booth_player_2.id %>
+                          <form action="/create_score" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                
+                                <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                
+                                <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                
+                                <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_1.id %>">
+                  
+                                <!-- Label and input for title -->
+                                <div class="form-group">
+                                  <label for="title" class="control-label">
+                                    Score
+                                  </label>
+                  
+                                  <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                </div>
+                  
+                                <button class="btn btn-default">
+                                  Post Score
+                                </button>
+                          </form>
+                    <% elsif current_user.id == @match.kellogg_player_1.id %>
+                          <form action="/create_score" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                
+                                <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                
+                                <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                
+                                <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_1.id %>">
+                  
+                                <!-- Label and input for title -->
+                                <div class="form-group">
+                                  <label for="title" class="control-label">
+                                    Score
+                                  </label>
+                  
+                                  <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                </div>
+                  
+                                <button class="btn btn-default">
+                                  Post Score
+                                </button>
+                          </form>
+                    <% elsif current_user.id == @match.kellogg_player_1.id %>
+                          <form action="/create_score" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                
+                                <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                
+                                <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                
+                                <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_1.id %>">
+                  
+                                <!-- Label and input for title -->
+                                <div class="form-group">
+                                  <label for="title" class="control-label">
+                                    Score
+                                  </label>
+                  
+                                  <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                </div>
+                  
+                                <button class="btn btn-default">
+                                  Post Score
+                                </button>
+                          </form>      
                     <% end %>
                   </div>  
                 </div> 
@@ -177,13 +252,19 @@
                       Score: 
                       <%= @score2.score %> 
                     </div>
-                      <% if current_user.id == @match.booth_player_1.id %>
+                        <% if current_user.id == @match.booth_player_1.id %>
+                          <a href="/scores/<%= @score2.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score2.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.booth_player_2_id%>
+                          <a href="/scores/<%= @score2.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score2.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_1_id%>
+                          <a href="/scores/<%= @score2.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score2.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_2_id%>
-                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
-                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                      <% end %>
+                          <a href="/scores/<%= @score2.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score2.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                        <% end %>
                     </div>
                   </div>
                 </div>
@@ -205,32 +286,101 @@
                     <div class="panel-body">
                       <div class="lead">
                         <% if current_user.id == @match.booth_player_1.id %>
-                        <% elsif current_user.id == @match.booth_player_2_id%>
-                        <% elsif current_user.id == @match.kellogg_player_1_id%>
-                        <% elsif current_user.id == @match.kellogg_player_2_id%>
-                            <form action="/create_score" method="post">
-                              <!-- Hidden input for authenticity token to protect from forgery -->
-                              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                              
-                              <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
-                              
-                              <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
-                              
-                              <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_2.id %>">
-                
-                              <!-- Label and input for title -->
-                              <div class="form-group">
-                                <label for="title" class="control-label">
-                                  Score
-                                </label>
-                
-                                <input type="number" id="score" name="score" placeholder="Score" class="form-control">
-                              </div>
-                
-                              <button class="btn btn-default">
-                                Post Score
-                              </button>
-                            </form>
+                          <form action="/create_score" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                
+                                <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                
+                                <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                
+                                <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_2.id %>">
+                  
+                                <!-- Label and input for title -->
+                                <div class="form-group">
+                                  <label for="title" class="control-label">
+                                    Score
+                                  </label>
+                  
+                                  <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                </div>
+                  
+                                <button class="btn btn-default">
+                                  Post Score
+                                </button>
+                          </form>
+                        <% elsif current_user.id == @match.booth_player_2.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_2.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>
+                        <% elsif current_user.id == @match.kellogg_player_1.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_2.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>
+                        <% elsif current_user.id == @match.kellogg_player_1.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.booth_player_2.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>      
                         <% end %>
                       </div>  
                     </div> 
@@ -258,13 +408,19 @@
                       Score: 
                       <%= @score3.score %> 
                     </div>
-                      <% if current_user.id == @match.booth_player_1.id %>
+                        <% if current_user.id == @match.booth_player_1.id %>
+                          <a href="/scores/<%= @score3.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score3.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.booth_player_2_id%>
+                          <a href="/scores/<%= @score3.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score3.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_1_id%>
+                          <a href="/scores/<%= @score3.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score3.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_2_id%>
-                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
-                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                      <% end %>
+                          <a href="/scores/<%= @score3.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score3.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                        <% end %>
                     </div>
                   </div>
                 </div>
@@ -286,32 +442,101 @@
                     <div class="panel-body">
                       <div class="lead">
                         <% if current_user.id == @match.booth_player_1.id %>
-                        <% elsif current_user.id == @match.booth_player_2_id%>
-                        <% elsif current_user.id == @match.kellogg_player_1_id%>
-                        <% elsif current_user.id == @match.kellogg_player_2_id%>
-                            <form action="/create_score" method="post">
-                              <!-- Hidden input for authenticity token to protect from forgery -->
-                              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                              
-                              <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
-                              
-                              <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
-                              
-                              <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_1.id %>">
-                
-                              <!-- Label and input for title -->
-                              <div class="form-group">
-                                <label for="title" class="control-label">
-                                  Score
-                                </label>
-                
-                                <input type="number" id="score" name="score" placeholder="Score" class="form-control">
-                              </div>
-                
-                              <button class="btn btn-default">
-                                Post Score
-                              </button>
-                            </form>
+                          <form action="/create_score" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                
+                                <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                
+                                <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                
+                                <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_1.id %>">
+                  
+                                <!-- Label and input for title -->
+                                <div class="form-group">
+                                  <label for="title" class="control-label">
+                                    Score
+                                  </label>
+                  
+                                  <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                </div>
+                  
+                                <button class="btn btn-default">
+                                  Post Score
+                                </button>
+                          </form>
+                        <% elsif current_user.id == @match.booth_player_2.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_1.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>
+                        <% elsif current_user.id == @match.kellogg_player_1.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_1.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>
+                        <% elsif current_user.id == @match.kellogg_player_1.id %>
+                              <form action="/create_score" method="post">
+                                    <!-- Hidden input for authenticity token to protect from forgery -->
+                                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                    
+                                    <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                                    
+                                    <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                                    
+                                    <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_1.id %>">
+                      
+                                    <!-- Label and input for title -->
+                                    <div class="form-group">
+                                      <label for="title" class="control-label">
+                                        Score
+                                      </label>
+                      
+                                      <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                                    </div>
+                      
+                                    <button class="btn btn-default">
+                                      Post Score
+                                    </button>
+                              </form>      
                         <% end %>
                       </div>  
                     </div> 
@@ -339,13 +564,19 @@
                       Score: 
                       <%= @score4.score %> 
                     </div>
-                      <% if current_user.id == @match.booth_player_1.id %>
+                        <% if current_user.id == @match.booth_player_1.id %>
+                          <a href="/scores/<%= @score4.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score4.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.booth_player_2_id%>
+                          <a href="/scores/<%= @score4.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score4.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_1_id%>
+                          <a href="/scores/<%= @score4.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score4.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                         <% elsif current_user.id == @match.kellogg_player_2_id%>
-                        <a href="/scores/<%= @score1.id %>/edit" class="btn btn-warning">Edit</a>
-                        <a href="/delete_score/<%= @score1.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                      <% end %>
+                          <a href="/scores/<%= @score4.id %>/edit" class="btn btn-warning">Edit</a>
+                          <a href="/delete_score/<%= @score4.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                        <% end %>
                     </div>
                   </div>
                 </div>
@@ -367,8 +598,77 @@
                     <div class="panel-body">
                       <div class="lead">
                         <% if current_user.id == @match.booth_player_1.id %>
+                          <form action="/create_score" method="post">
+                              <!-- Hidden input for authenticity token to protect from forgery -->
+                              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                              
+                              <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                              
+                              <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                              
+                              <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_2.id %>">
+                
+                              <!-- Label and input for title -->
+                              <div class="form-group">
+                                <label for="title" class="control-label">
+                                  Score
+                                </label>
+                
+                                <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                              </div>
+                
+                              <button class="btn btn-default">
+                                Post Score
+                              </button>
+                            </form>
                         <% elsif current_user.id == @match.booth_player_2_id%>
+                          <form action="/create_score" method="post">
+                              <!-- Hidden input for authenticity token to protect from forgery -->
+                              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                              
+                              <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                              
+                              <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                              
+                              <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_2.id %>">
+                
+                              <!-- Label and input for title -->
+                              <div class="form-group">
+                                <label for="title" class="control-label">
+                                  Score
+                                </label>
+                
+                                <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                              </div>
+                
+                              <button class="btn btn-default">
+                                Post Score
+                              </button>
+                            </form>
                         <% elsif current_user.id == @match.kellogg_player_1_id%>
+                          <form action="/create_score" method="post">
+                              <!-- Hidden input for authenticity token to protect from forgery -->
+                              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                              
+                              <input type="hidden" id="match_id" name="match_id" value="<%= @match.id %>">
+                              
+                              <input type="hidden" id="hole_id" name="hole_id" value="<%= hole.id %>">
+                              
+                              <input type="hidden" id="player_id" name="player_id" value="<%= @match.kellogg_player_2.id %>">
+                
+                              <!-- Label and input for title -->
+                              <div class="form-group">
+                                <label for="title" class="control-label">
+                                  Score
+                                </label>
+                
+                                <input type="number" id="score" name="score" placeholder="Score" class="form-control">
+                              </div>
+                
+                              <button class="btn btn-default">
+                                Post Score
+                              </button>
+                            </form>
                         <% elsif current_user.id == @match.kellogg_player_2_id%>
                             <form action="/create_score" method="post">
                               <!-- Hidden input for authenticity token to protect from forgery -->

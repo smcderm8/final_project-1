@@ -17,5 +17,7 @@ class Score < ApplicationRecord
     belongs_to :match
     belongs_to :hole
     
+    validates :player_id, :uniqueness => {:scope => :hole_id }
+    
     
 end

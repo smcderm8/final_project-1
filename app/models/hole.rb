@@ -18,4 +18,12 @@ class Hole < ApplicationRecord
     
     has_many :scores, :dependent => :destroy
     
+    validates :course_id, :uniqueness => {:scope => :hole_number }
+    
+    validates :course_id, :presence => true
+    validates :hole_number, :presence => true
+    validates :par, :presence => true
+    validates :yardage, :presence => true
+    validates :handicap, :presence => true
+    
 end

@@ -40,6 +40,7 @@
         <th>Booth Player 2</th>
         <th>Kellogg Player 1</th>
         <th>Kellogg Player 2</th>
+        <th>Actions</th>
       </tr>
       
       <% @matches = @course.matches %>
@@ -54,7 +55,7 @@
         <td><%= match.kellogg_player_1.name %></td>
         <td><%= match.kellogg_player_2.name %></td>
         <td>
-          <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
+          <a href="/matches/<%= match.id %>" class="btn btn-primary">View Match</a>
         </td>
       </tr>
       <% end %>

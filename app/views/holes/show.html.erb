@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Hole #<%= @hole.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Course</dt>
+      <dd><%= @hole.course_id %></dd>
+
+      <dt>Hole number</dt>
+      <dd><%= @hole.hole_number %></dd>
+
+      <dt>Par</dt>
+      <dd><%= @hole.par %></dd>
+
+      <dt>Yardage</dt>
+      <dd><%= @hole.yardage %></dd>
+
+      <dt>Handicap</dt>
+      <dd><%= @hole.handicap %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/holes" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/holes/<%= @hole.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_hole/<%= @hole.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

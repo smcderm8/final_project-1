@@ -1,0 +1,104 @@
+<div class="page-header">
+  <h2><%= @course.name %></h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt></dt>
+      <dd><img src = "<%= @course.image_url %>" width = 600, height = 240</dd>
+
+      <dt>Address</dt>
+      <dd><%= @course.address %></dd>
+
+      <dt>Par</dt>
+      <dd><%= @course.par %></dd>
+
+      <dt>Rating</dt>
+      <dd><%= @course.rating %></dd>
+
+      <dt>Slope</dt>
+      <dd><%= @course.slope %></dd>
+
+      <dt>Yardage</dt>
+      <dd><%= @course.yardage %></dd>
+
+    </dl>
+  </div>
+</div> 
+
+<h3>Matches</h3>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Match Name</th>
+        <th>Winning Team</th>
+        <th>Tee Time</th>
+        <th>Booth Player 1</th>
+        <th>Booth Player 2</th>
+        <th>Kellogg Player 1</th>
+        <th>Kellogg Player 2</th>
+        <th>Actions</th>
+      </tr>
+      
+      <% @matches = @course.matches %>
+
+      <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.name %></td>
+        <td><img src = "<%= match.winning_team.photo_url %>" width = 110, height = 34></td>
+        <td><%= match.tee_time %></td>
+        <td><%= match.booth_player_1.name %></td>
+        <td><%= match.booth_player_2.name %></td>
+        <td><%= match.kellogg_player_1.name %></td>
+        <td><%= match.kellogg_player_2.name %></td>
+        <td>
+          <a href="/matches/<%= match.id %>" class="btn btn-primary">View Match</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<h3>Scorecard</h3>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Hole Number</th>
+        <th>Par</th>
+        <th>Yardage</th>
+        <th>Handicap</th>
+      </tr>
+      
+      <% @holes = @course.holes %>
+
+      <% @holes.each do |hole| %>
+      <tr>
+        <td><%= hole.hole_number %></td>
+        <td><%= hole.par %></td>
+        <td><%= hole.yardage %></td>
+        <td><%= hole.handicap %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+    
+
+    <div class="btn-group btn-group-justified">
+      <a href="/courses" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/courses/<%= @course.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_course/<%= @course.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+

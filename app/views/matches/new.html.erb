@@ -1,0 +1,118 @@
+<!-- Validation failure messages -->
+<% if @match.errors.any? %>
+  <% @match.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Match</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_match" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="i.e. Dubsdread Match #1" class="form-control" value="<%= @match.name %>">
+      </div>
+
+      <!-- Label and input for course_id -->
+      <div class="form-group">
+        <label for="course_id" class="control-label">
+          Course
+        </label>
+
+        <%= select_tag("course_id", options_from_collection_for_select(Course.all, :id, :name, 1), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for tee_time -->
+      <div class="form-group">
+        <label for="tee_time" class="control-label">
+          Tee time
+        </label>
+
+        <input type="datetime_field" id="tee_time" name="tee_time" placeholder="Tee time" class="form-control" value="<%= Time.now %>">
+      </div>
+
+      <!-- Label and input for winning_team_id -->
+      <div class="form-group">
+        <label for="winning_team_id" class="control-label">
+          Winning team (Doesn't matter right now; this will update once scores are input and button at bottom of match is clicked)
+        </label>
+
+        <%= select_tag("winning_team_id", options_from_collection_for_select(Team.all, :id, :name, 1), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for home_team_id -->
+      <div class="form-group">
+        <label for="home_team_id" class="control-label">
+          Home team
+        </label>
+
+        <%= select_tag("home_team_id", options_from_collection_for_select(Team.all, :id, :name, 1), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for away_team_id -->
+      <div class="form-group">
+        <label for="away_team_id" class="control-label">
+          Away team
+        </label>
+
+        <%= select_tag("away_team_id", options_from_collection_for_select(Team.all, :id, :name, 2), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for booth_player_1_id -->
+      <div class="form-group">
+        <label for="booth_player_1_id" class="control-label">
+          Booth player 1
+        </label>
+
+        <%= select_tag("booth_player_1_id", options_from_collection_for_select(User.all, :id, :name, 1), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for booth_player_2_id -->
+      <div class="form-group">
+        <label for="booth_player_2_id" class="control-label">
+          Booth player 2
+        </label>
+
+        <%= select_tag("booth_player_2_id", options_from_collection_for_select(User.all, :id, :name, 2), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for kellogg_player_1_id -->
+      <div class="form-group">
+        <label for="kellogg_player_1_id" class="control-label">
+          Kellogg player 1
+        </label>
+
+        <%= select_tag("kellogg_player_1_id", options_from_collection_for_select(User.all, :id, :name, 5), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for kellogg_player_2_id -->
+      <div class="form-group">
+        <label for="kellogg_player_2_id" class="control-label">
+          Kellogg player 2
+        </label>
+
+        <%= select_tag("kellogg_player_2_id", options_from_collection_for_select(User.all, :id, :name, 6), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-success">
+        Create Match
+      </button>
+      or
+      <a href="/matches">Cancel</a>
+    </form>
+  </div>
+</div>
